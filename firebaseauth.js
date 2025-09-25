@@ -82,12 +82,8 @@ signIn.addEventListener('click', (event) => {
 
     // Realiza o login com e-mail e senha
     signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
+    .then(() => {
         showMessage('usuário logado com sucesso', 'signInMessage'); // Exibe mensagem de sucesso
-        const user = userCredential.user;
-
-        // Salva o ID do usuário no localStorage
-        localStorage.setItem('loggedInUserId', user.uid);
 
         window.location.href = 'homepage.html'; // Redireciona para a página inicial
     })
@@ -109,7 +105,6 @@ function signInWithGoogle() {
     .then((result) => {
         const user = result.user;
         showMessage('Usuário logado com sucesso com Google', 'signInMessage');
-        localStorage.setItem('loggedInUserId', user.uid);
         window.location.href = 'homepage.html'; // Redireciona para a página inicial
     })
     .catch((error) => {
